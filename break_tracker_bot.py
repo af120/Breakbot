@@ -16,7 +16,7 @@ from aiogram.types import (
 )
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 
-BOT_TOKEN: str = os.environ.get("BOT_TOKEN", "8609698929:AAFCHK2T5KuG5ddlQkanv49V8RB5nVlvX6I")
+BOT_TOKEN: str = os.environ.get("BOT_TOKEN", "8609698929:AAFO6Y7BZoo7x5Ay7GU_2GZ27F54WnlVZ3M")
 GROUP_CHAT_ID: int = -1004473132946
 
 BREAK_LIMIT_MINUTES: int = 1
