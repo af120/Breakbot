@@ -144,7 +144,9 @@ def user_mention(full_name: str, user_id: int) -> str:
 
 bot = Bot(
     token=BOT_TOKEN,
-    default=DefaultBotProperties(parse_mode="HTML"),
+    default=DefaultBotProperties(
+        parse_mode="HTML"
+    )
 )
 dp = Dispatcher()
 
