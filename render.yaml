@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: breakbot-barbershop-api
+    env: node
+    buildCommand: cd barbershop && npm install
+    startCommand: cd barbershop && node server/index.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
