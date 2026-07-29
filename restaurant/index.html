@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ember & Oak — A contemporary fine dining restaurant blending seasonal ingredients with artisan craft. Reserve your table for an unforgettable culinary experience.">
+  <meta name="theme-color" content="#0a0a0a">
+  <title>Ember & Oak — Contemporary Fine Dining</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔥</text></svg>">
+</head>
+<body>
+
+  <!-- =============================================
+       NAVIGATION
+       ============================================= -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="#hero" class="nav-logo" aria-label="Ember & Oak — Home">
+        <span class="nav-logo-name">Ember &amp; Oak</span>
+        <span class="nav-logo-tagline">Contemporary Fine Dining</span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#contact" class="nav-reserve-btn">Reserve a Table</a></li>
+      </ul>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile nav overlay (click to close) -->
+  <div class="nav-overlay" id="navOverlay"></div>
+
+  <!-- =============================================
+       HERO / HOME
+       ============================================= -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <img src="images/hero-dish.jpg" alt="Beautifully plated gourmet salmon dish with edible flowers" width="1920" height="1080">
+    </div>
+    <div class="hero-overlay"></div>
+
+    <div class="container">
+      <div class="hero-content">
+        <p class="hero-eyebrow">Est. 2018 · Fine Dining</p>
+        <h1 class="hero-title">Where fire meets <em>flavor</em></h1>
+        <p class="hero-description">
+          Experience contemporary cuisine crafted with seasonal ingredients,
+          artisan techniques, and a passion for unforgettable dining moments.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary" id="heroCta">
+            Reserve a Table
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#menu" class="btn btn-outline" id="heroMenuBtn">Explore Menu</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-scroll" aria-hidden="true">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       MENU
+       ============================================= -->
+  <section class="menu" id="menu">
+    <div class="container">
+      <div class="menu-header">
+        <div class="section-label section-label--center reveal">The Menu</div>
+        <h2 class="section-title reveal reveal-delay-1">A seasonal journey</h2>
+        <p class="section-subtitle reveal reveal-delay-2">
+          Each dish reflects our commitment to quality, creativity,
+          and the art of fire-cooked cuisine
+        </p>
+      </div>
+
+      <div class="menu-tabs reveal reveal-delay-2" id="menuTabs" role="tablist">
+        <button class="menu-tab active" data-category="starters" role="tab" aria-selected="true">Starters</button>
+        <button class="menu-tab" data-category="mains" role="tab" aria-selected="false">Main Courses</button>
+        <button class="menu-tab" data-category="desserts" role="tab" aria-selected="false">Desserts</button>
+        <button class="menu-tab" data-category="drinks" role="tab" aria-selected="false">Cocktails</button>
+      </div>
+
+      <div class="menu-grid reveal reveal-delay-3" id="menuGrid" role="tabpanel">
+        <!-- Populated by script.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       DIVIDER
+       ============================================= -->
+  <div class="section-divider" aria-hidden="true">
+    <div class="divider-line">
+      <div class="divider-diamond"></div>
+    </div>
+  </div>
+
+  <!-- =============================================
+       ABOUT
+       ============================================= -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image reveal">
+          <img src="images/chef-cooking.jpg" alt="Chef preparing food with dramatic flames in our open kitchen" width="800" height="1000" loading="lazy">
+          <div class="about-image-badge">
+            <div class="badge-number">8</div>
+            <div class="badge-text">Years of Excellence</div>
+          </div>
+        </div>
+
+        <div class="about-content">
+          <div class="section-label reveal">Our Story</div>
+          <h2 class="section-title reveal reveal-delay-1">
+            Crafted with passion,<br>served with soul
+          </h2>
+          <p class="about-text reveal reveal-delay-2">
+            Ember &amp; Oak was born from a simple belief: that dining should be
+            an experience that engages all the senses. Our chef-driven kitchen
+            sources the finest seasonal ingredients from local farms and artisan
+            producers, transforming them into dishes that tell a story on every plate.
+          </p>
+          <p class="about-text reveal reveal-delay-2">
+            Nestled in the heart of the city, our space blends exposed brick
+            warmth with contemporary elegance — an intimate setting where every
+            evening feels like an occasion.
+          </p>
+
+          <div class="about-features reveal reveal-delay-3">
+            <div class="about-feature">
+              <div class="about-feature-icon" aria-hidden="true">🌿</div>
+              <h4>Farm to Table</h4>
+              <p>Locally sourced seasonal ingredients from trusted partners</p>
+            </div>
+            <div class="about-feature">
+              <div class="about-feature-icon" aria-hidden="true">🔥</div>
+              <h4>Open Fire Kitchen</h4>
+              <p>Wood-fired cooking for authentic, smoky depth of flavor</p>
+            </div>
+            <div class="about-feature">
+              <div class="about-feature-icon" aria-hidden="true">🍷</div>
+              <h4>Curated Wines</h4>
+              <p>250+ labels handpicked by our sommelier</p>
+            </div>
+            <div class="about-feature">
+              <div class="about-feature-icon" aria-hidden="true">✨</div>
+              <h4>Private Dining</h4>
+              <p>Bespoke events in our intimate private room</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       GALLERY
+       ============================================= -->
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <div class="gallery-header">
+        <div class="section-label section-label--center reveal">Visual Journey</div>
+        <h2 class="section-title reveal reveal-delay-1">Moments captured</h2>
+        <p class="section-subtitle reveal reveal-delay-2">
+          A glimpse into the Ember &amp; Oak dining experience
+        </p>
+      </div>
+
+      <div class="gallery-grid reveal reveal-delay-3">
+        <div class="gallery-item" data-caption="Our Signature Dining Room">
+          <img src="images/restaurant-interior.jpg" alt="Elegant restaurant interior with candlelit tables" width="800" height="450" loading="lazy">
+          <div class="gallery-item-overlay"><span>The Dining Room</span></div>
+        </div>
+        <div class="gallery-item" data-caption="Artisan Appetizer Board">
+          <img src="images/appetizer-platter.jpg" alt="Gourmet appetizer platter with artisan cheeses" width="400" height="400" loading="lazy">
+          <div class="gallery-item-overlay"><span>Appetizer Board</span></div>
+        </div>
+        <div class="gallery-item" data-caption="Signature Seared Salmon">
+          <img src="images/hero-dish.jpg" alt="Seared salmon with microgreens and edible flowers" width="400" height="225" loading="lazy">
+          <div class="gallery-item-overlay"><span>Seared Salmon</span></div>
+        </div>
+        <div class="gallery-item" data-caption="Open Fire Kitchen">
+          <img src="images/chef-cooking.jpg" alt="Chef preparing food in the open fire kitchen" width="400" height="300" loading="lazy">
+          <div class="gallery-item-overlay"><span>Open Kitchen</span></div>
+        </div>
+        <div class="gallery-item" data-caption="Chocolate Lava Cake">
+          <img src="images/dessert-chocolate.jpg" alt="Chocolate lava cake with gold leaf and berry coulis" width="400" height="400" loading="lazy">
+          <div class="gallery-item-overlay"><span>Lava Cake</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       TESTIMONIALS
+       ============================================= -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <div class="testimonials-header">
+        <div class="section-label section-label--center reveal">Guest Reviews</div>
+        <h2 class="section-title reveal reveal-delay-1">What our guests say</h2>
+        <p class="section-subtitle reveal reveal-delay-2">
+          The experiences that keep our guests coming back
+        </p>
+      </div>
+
+      <div class="testimonials-grid">
+        <!-- Card 1 -->
+        <div class="testimonial-card reveal">
+          <div class="testimonial-quote-icon" aria-hidden="true">"</div>
+          <div class="testimonial-stars" aria-label="5 out of 5 stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="testimonial-text">
+            "An absolutely transcendent dining experience. The tasting menu was a
+            revelation — each course built on the last in ways I didn't expect.
+            The wine pairings were impeccable."
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">SC</div>
+            <div class="testimonial-author-info">
+              <h5>Sarah Chen</h5>
+              <p>Food Critic, The Metro Review</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="testimonial-card reveal reveal-delay-1">
+          <div class="testimonial-quote-icon" aria-hidden="true">"</div>
+          <div class="testimonial-stars" aria-label="5 out of 5 stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="testimonial-text">
+            "We celebrated our anniversary here and it was nothing short of magical.
+            The ambiance, the service, the food — every detail was thoughtfully
+            curated. A new favorite."
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">MR</div>
+            <div class="testimonial-author-info">
+              <h5>Marco Rosetti</h5>
+              <p>Loyal Guest since 2020</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="testimonial-card reveal reveal-delay-2">
+          <div class="testimonial-quote-icon" aria-hidden="true">"</div>
+          <div class="testimonial-stars" aria-label="5 out of 5 stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="testimonial-text">
+            "The open kitchen concept is thrilling — watching the chefs work the
+            flames while you dine is pure theater. The ribeye was the best I've
+            had in the city. Period."
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">EW</div>
+            <div class="testimonial-author-info">
+              <h5>Elena Whitfield</h5>
+              <p>Restaurant Enthusiast</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       CONTACT / RESERVATION
+       ============================================= -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact-wrapper">
+        <!-- Left column: info -->
+        <div class="contact-content">
+          <div class="section-label reveal">Reservations</div>
+          <h2 class="section-title reveal reveal-delay-1">Book your experience</h2>
+          <p class="section-subtitle reveal reveal-delay-2">
+            Join us for an evening of exceptional cuisine and warm hospitality.
+            We recommend reserving in advance, especially for weekend evenings.
+          </p>
+
+          <div class="contact-info reveal reveal-delay-3">
+            <div class="contact-info-item">
+              <div class="contact-info-icon" aria-hidden="true">📍</div>
+              <div class="contact-info-text">
+                <h5>Location</h5>
+                <p>142 Ember Lane, Downtown Arts District</p>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <div class="contact-info-icon" aria-hidden="true">🕖</div>
+              <div class="contact-info-text">
+                <h5>Hours</h5>
+                <p>Tue–Thu: 5:30 PM – 10:00 PM<br>
+                   Fri–Sat: 5:00 PM – 11:00 PM<br>
+                   Sun: 5:00 PM – 9:30 PM</p>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <div class="contact-info-icon" aria-hidden="true">📞</div>
+              <div class="contact-info-text">
+                <h5>Phone</h5>
+                <p>(555) 482-0196</p>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <div class="contact-info-icon" aria-hidden="true">✉️</div>
+              <div class="contact-info-text">
+                <h5>Email</h5>
+                <p>hello@emberandoak.com</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Map placeholder -->
+          <div class="contact-map reveal reveal-delay-4">
+            <div class="contact-map-placeholder">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              <p>142 Ember Lane, Downtown Arts District</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right column: form -->
+        <div class="contact-form-wrapper reveal reveal-delay-2">
+          <h3 class="contact-form-title">Make a Reservation</h3>
+          <form class="contact-form" id="contactForm" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="resName">Full Name</label>
+                <input type="text" id="resName" name="name" placeholder="Your name" required autocomplete="name">
+                <span class="form-error-msg">Please enter your name</span>
+              </div>
+              <div class="form-group">
+                <label for="resEmail">Email</label>
+                <input type="email" id="resEmail" name="email" placeholder="your@email.com" required autocomplete="email">
+                <span class="form-error-msg">Please enter a valid email</span>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="resPhone">Phone</label>
+                <input type="tel" id="resPhone" name="phone" placeholder="(555) 000-0000" required autocomplete="tel">
+                <span class="form-error-msg">Please enter a valid phone number</span>
+              </div>
+              <div class="form-group">
+                <label for="resDate">Date</label>
+                <input type="date" id="resDate" name="date" required>
+                <span class="form-error-msg">Please select a date</span>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="resTime">Time</label>
+                <select id="resTime" name="time" required>
+                  <option value="" disabled selected>Select time</option>
+                  <option value="17:00">5:00 PM</option>
+                  <option value="17:30">5:30 PM</option>
+                  <option value="18:00">6:00 PM</option>
+                  <option value="18:30">6:30 PM</option>
+                  <option value="19:00">7:00 PM</option>
+                  <option value="19:30">7:30 PM</option>
+                  <option value="20:00">8:00 PM</option>
+                  <option value="20:30">8:30 PM</option>
+                  <option value="21:00">9:00 PM</option>
+                  <option value="21:30">9:30 PM</option>
+                </select>
+                <span class="form-error-msg">Please select a time</span>
+              </div>
+              <div class="form-group">
+                <label for="resGuests">Guests</label>
+                <select id="resGuests" name="guests" required>
+                  <option value="" disabled selected>Party size</option>
+                  <option value="1">1 Guest</option>
+                  <option value="2">2 Guests</option>
+                  <option value="3">3 Guests</option>
+                  <option value="4">4 Guests</option>
+                  <option value="5">5 Guests</option>
+                  <option value="6">6 Guests</option>
+                  <option value="7">7+ Guests</option>
+                </select>
+                <span class="form-error-msg">Please select party size</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="resOccasion">Occasion</label>
+              <select id="resOccasion" name="occasion">
+                <option value="" disabled selected>Select (optional)</option>
+                <option value="birthday">Birthday</option>
+                <option value="anniversary">Anniversary</option>
+                <option value="business">Business Dinner</option>
+                <option value="date">Date Night</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="resNotes">Special Requests</label>
+              <textarea id="resNotes" name="notes" placeholder="Dietary restrictions, seating preferences, allergies..." rows="3"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary form-submit" id="submitBtn">
+              Confirm Reservation
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       FOOTER
+       ============================================= -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="nav-logo">
+            <span class="nav-logo-name">Ember &amp; Oak</span>
+            <span class="nav-logo-tagline">Contemporary Fine Dining</span>
+          </div>
+          <p>
+            A celebration of fire, flavor, and the art of gathering around a table.
+            Every meal at Ember &amp; Oak is an occasion to remember.
+          </p>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="#" aria-label="Facebook">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="#" aria-label="Twitter / X">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"/><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-column">
+          <h4>Navigate</h4>
+          <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Reservations</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Information</h4>
+          <ul>
+            <li><a href="#">Private Events</a></li>
+            <li><a href="#">Gift Cards</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Press</a></li>
+            <li><a href="#">Accessibility</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column footer-newsletter">
+          <h4>Stay Connected</h4>
+          <p>Subscribe for seasonal menu updates, exclusive events, and special offers.</p>
+          <form class="footer-newsletter-form" id="newsletterForm">
+            <input type="email" placeholder="Enter your email" required aria-label="Email for newsletter">
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Ember &amp; Oak. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =============================================
+       LIGHTBOX MODAL
+       ============================================= -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close image viewer">&times;</button>
+    <img src="" alt="" id="lightboxImg">
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+  </div>
+
+  <!-- =============================================
+       SUCCESS TOAST
+       ============================================= -->
+  <div class="form-success-toast" id="successToast" role="alert" aria-live="polite">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+    <span></span>
+  </div>
+
+  <!-- =============================================
+       BACK TO TOP
+       ============================================= -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
+
+  <!-- JS at end of body for faster initial paint -->
+  <script src="script.js"></script>
+</body>
+</html>
