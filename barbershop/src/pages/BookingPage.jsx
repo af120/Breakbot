@@ -838,6 +838,9 @@ export default function BookingPage() {
           </div>
         )}
       </div>
+      <div style={{ textAlign: 'center', marginTop: '2rem', paddingBottom: '2rem' }}>
+        <a href="#/login" onClick={(e) => { e.preventDefault(); window.location.href = '/Breakbot/barbershop/login'; }} style={{ color: '#4b5563', textDecoration: 'none', fontSize: '0.85rem' }}>Admin Login</a>
+      </div>
     </div>
   );
 }

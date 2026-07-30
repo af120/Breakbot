@@ -26,7 +26,7 @@ function Sidebar() {
   const location = useLocation();
 
   const links = [
-    { to: "/", icon: LayoutDashboard, label: "Dashboard" },
+    { to: "/admin", icon: LayoutDashboard, label: "Dashboard" },
     { to: "/queue", icon: Clock, label: "Walk-in Queue" },
     { to: "/appointments", icon: Calendar, label: "Appointments" },
     { to: "/customers", icon: Users, label: "Customers" },
@@ -84,9 +84,9 @@ function App() {
       {user && <Sidebar />}
       <div className={user ? "main-content" : "w-full"}>
         <Routes>
-          <Route path="/book" element={<BookingPage />} />
-          <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
-          <Route path="/" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
+          <Route path="/" element={<BookingPage />} />
+          <Route path="/login" element={user ? <Navigate to="/admin" /> : <Login />} />
+          <Route path="/admin" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
           <Route path="/appointments" element={<PrivateRoute><Appointments /></PrivateRoute>} />
           <Route path="/queue" element={<PrivateRoute><Queue /></PrivateRoute>} />
           <Route path="/customers" element={<PrivateRoute><Customers /></PrivateRoute>} />
