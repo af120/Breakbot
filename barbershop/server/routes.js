@@ -110,6 +110,40 @@ router.put('/appointments/:id', (req, res) => {
   res.json({ success: true });
 });
 
+// --- Booking Requests ---
+router.get('/booking-requests', (req, res) => {
+  const requests = db.prepare(`
+    SELECT a.*, c.name as customer_name, c.phone as customer_phone,
+           b.name as barber_name, s.name as service_name, s.price as service_price, s.duration as service_duration
+    FROM appointments a
+    LEFT JOIN customers c ON a.customer_id = c.id
+    LEFT JOIN barbers b ON a.barber_id = b.id
+    LEFT JOIN services s ON a.service_id = s.id
+    WHERE a.status = 'Pending'
+    ORDER BY a.date ASC, a.time ASC
+  `).all();
+  res.json(requests);
+});
+
+router.put('/booking-requests/:id/accept', (req, res) => {
+  const appointment = db.prepare('SELECT * FROM appointments WHERE id = ? AND status = "Pending"').get(req.params.id);
+  if (!appointment) {
+    return res.status(404).json({ error: 'Booking request not found or already processed' });
+  }
+  // Accept: change status to "Scheduled" (put it in the queue)
+  db.prepare('UPDATE appointments SET status = "Scheduled" WHERE id = ?').run(req.params.id);
+  res.json({ success: true, message: 'Booking accepted and added to schedule' });
+});
+
+router.put('/booking-requests/:id/reject', (req, res) => {
+  const appointment = db.prepare('SELECT * FROM appointments WHERE id = ? AND status = "Pending"').get(req.params.id);
+  if (!appointment) {
+    return res.status(404).json({ error: 'Booking request not found or already processed' });
+  }
+  db.prepare('UPDATE appointments SET status = "Rejected" WHERE id = ?').run(req.params.id);
+  res.json({ success: true, message: 'Booking rejected' });
+});
+
 // --- Queue ---
 router.get('/queue', (req, res) => {
   const today = new Date().toISOString().split('T')[0];
@@ -184,6 +218,7 @@ router.get('/dashboard', (req, res) => {
   const todayAppointments = db.prepare('SELECT count(*) as count FROM appointments WHERE date = ?').get(today).count;
   const waitingCustomers = db.prepare('SELECT count(*) as count FROM appointments WHERE date = ? AND status = "Waiting"').get(today).count;
   const completedToday = db.prepare('SELECT count(*) as count FROM appointments WHERE date = ? AND status = "Completed"').get(today).count;
+  const pendingBookings = db.prepare('SELECT count(*) as count FROM appointments WHERE status = "Pending"').get().count;
   
   const incomeToday = db.prepare(`
     SELECT sum(p.amount) as total 
@@ -201,6 +236,7 @@ router.get('/dashboard', (req, res) => {
     todayAppointments,
     waitingCustomers,
     completedToday,
+    pendingBookings,
     incomeToday,
     incomeMonth
   });

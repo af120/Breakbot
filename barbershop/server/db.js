@@ -96,12 +96,14 @@ function initDb() {
     insertSetting.run('default_commission', '50');
   }
 
-  // Insert admin user
-  const checkUsers = db.prepare('SELECT count(*) as count FROM users').get();
-  if (checkUsers.count === 0) {
-    const bcrypt = require('bcryptjs');
-    const hash = bcrypt.hashSync('admin123', 10);
+  // Insert or update admin user
+  const bcrypt = require('bcryptjs');
+  const hash = bcrypt.hashSync('Admin123!', 10);
+  const existingAdmin = db.prepare('SELECT id FROM users WHERE username = ?').get('admin');
+  if (!existingAdmin) {
     db.prepare('INSERT INTO users (username, password, role, name) VALUES (?, ?, ?, ?)').run('admin', hash, 'Admin', 'Administrator');
+  } else {
+    db.prepare('UPDATE users SET password = ? WHERE username = ?').run(hash, 'admin');
   }
 
   // Insert sample services

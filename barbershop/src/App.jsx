@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route, Navigate, Link, useLocation } from 'react-router-dom';
-import { Scissors, LayoutDashboard, Calendar, Users, Briefcase, Settings, LogOut, FileText, CreditCard, Clock, Activity } from 'lucide-react';
+import { Scissors, LayoutDashboard, Calendar, Users, Briefcase, Settings, LogOut, FileText, CreditCard, Clock, Activity, Globe } from 'lucide-react';
 import { useAuth } from './contexts/AuthContext';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
@@ -13,6 +13,8 @@ import Payments from './pages/Payments';
 import Expenses from './pages/Expenses';
 import Reports from './pages/Reports';
 import SettingsPage from './pages/Settings';
+import BookingPage from './pages/BookingPage';
+import BookingRequests from './pages/BookingRequests';
 
 function PrivateRoute({ children }) {
   const { user } = useAuth();
@@ -29,6 +31,7 @@ function Sidebar() {
     { to: "/appointments", icon: Calendar, label: "Appointments" },
     { to: "/customers", icon: Users, label: "Customers" },
     { to: "/payments", icon: CreditCard, label: "Payments" },
+    { to: "/booking-requests", icon: Globe, label: "Bookings" },
   ];
 
   if (user?.role === 'Admin') {
@@ -81,6 +84,7 @@ function App() {
       {user && <Sidebar />}
       <div className={user ? "main-content" : "w-full"}>
         <Routes>
+          <Route path="/book" element={<BookingPage />} />
           <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
           <Route path="/" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
           <Route path="/appointments" element={<PrivateRoute><Appointments /></PrivateRoute>} />
@@ -92,6 +96,7 @@ function App() {
           <Route path="/expenses" element={<PrivateRoute><Expenses /></PrivateRoute>} />
           <Route path="/reports" element={<PrivateRoute><Reports /></PrivateRoute>} />
           <Route path="/settings" element={<PrivateRoute><SettingsPage /></PrivateRoute>} />
+          <Route path="/booking-requests" element={<PrivateRoute><BookingRequests /></PrivateRoute>} />
         </Routes>
       </div>
     </div>

@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const db = require('./db');
 const routes = require('./routes');
+const publicRoutes = require('./publicRoutes');
 const jwt = require('jsonwebtoken');
 
 const app = express();
@@ -10,7 +11,24 @@ app.use(express.json());
 
 const JWT_SECRET = process.env.JWT_SECRET || 'secret123';
 
-// Auth middleware
+// Public routes (no auth needed)
+app.use('/api/public', publicRoutes);
+
+app.post('/api/login', (req, res) => {
+  const { username, password } = req.body;
+  const user = db.prepare('SELECT * FROM users WHERE username = ?').get(username);
+  if (!user) return res.status(401).json({ error: 'Invalid credentials' });
+  
+  const bcrypt = require('bcryptjs');
+  if (!bcrypt.compareSync(password, user.password)) {
+    return res.status(401).json({ error: 'Invalid credentials' });
+  }
+  
+  const token = jwt.sign({ id: user.id, username: user.username, role: user.role }, JWT_SECRET, { expiresIn: '1d' });
+  res.json({ token, user: { id: user.id, username: user.username, role: user.role, name: user.name } });
+});
+
+// Auth middleware for protected routes
 app.use('/api', (req, res, next) => {
   if (req.path === '/login') return next();
   
@@ -27,20 +45,6 @@ app.use('/api', (req, res, next) => {
   }
 });
 
-app.post('/api/login', (req, res) => {
-  const { username, password } = req.body;
-  const user = db.prepare('SELECT * FROM users WHERE username = ?').get(username);
-  if (!user) return res.status(401).json({ error: 'Invalid credentials' });
-  
-  const bcrypt = require('bcryptjs');
-  if (!bcrypt.compareSync(password, user.password)) {
-    return res.status(401).json({ error: 'Invalid credentials' });
-  }
-  
-  const token = jwt.sign({ id: user.id, username: user.username, role: user.role }, JWT_SECRET, { expiresIn: '1d' });
-  res.json({ token, user: { id: user.id, username: user.username, role: user.role, name: user.name } });
-});
-
 const path = require('path');
 
 app.use('/api', routes);
@@ -48,7 +52,7 @@ app.use('/api', routes);
 // Serve frontend in production
 app.use(express.static(path.join(__dirname, '../dist')));
 
-app.get('*', (req, res) => {
+app.use((req, res) => {
   res.sendFile(path.join(__dirname, '../dist', 'index.html'));
 });
 

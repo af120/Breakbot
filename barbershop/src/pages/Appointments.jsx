@@ -96,8 +96,8 @@ export default function Appointments() {
   const getStatusBadge = (status) => {
     switch(status) {
       case 'Completed': return 'badge-success';
-      case 'Cancelled': return 'badge-danger';
-      case 'Waiting': return 'badge-warning';
+      case 'Cancelled': case 'Rejected': return 'badge-danger';
+      case 'Waiting': case 'Pending': return 'badge-warning';
       case 'In Service': return 'badge-info';
       default: return 'badge-default';
     }
@@ -121,11 +121,13 @@ export default function Appointments() {
           </select>
           <select className="form-control" style={{width: 'auto'}} value={filters.status} onChange={e => setFilters({...filters, status: e.target.value})}>
             <option value="">All Statuses</option>
+            <option value="Pending">Pending</option>
             <option value="Scheduled">Scheduled</option>
             <option value="Waiting">Waiting</option>
             <option value="In Service">In Service</option>
             <option value="Completed">Completed</option>
             <option value="Cancelled">Cancelled</option>
+            <option value="Rejected">Rejected</option>
             <option value="No-show">No-show</option>
           </select>
         </div>
@@ -207,11 +209,13 @@ export default function Appointments() {
             <div className="form-group">
               <label>Status</label>
               <select className="form-control" required value={formData.status} onChange={e => setFormData({...formData, status: e.target.value})}>
+                <option value="Pending">Pending</option>
                 <option value="Scheduled">Scheduled</option>
                 <option value="Waiting">Waiting</option>
                 <option value="In Service">In Service</option>
                 <option value="Completed">Completed</option>
                 <option value="Cancelled">Cancelled</option>
+                <option value="Rejected">Rejected</option>
                 <option value="No-show">No-show</option>
               </select>
             </div>

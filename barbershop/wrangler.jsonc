@@ -1,0 +1,16 @@
+{
+  "name": "barbershop-api",
+  "main": "worker.js",
+  "compatibility_date": "2024-03-20",
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "barbershop-db",
+      "database_id": "0dc81ea1-ca09-403b-900a-3f4357df8772",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "observability": {
+    "enabled": true
+  }
+}

@@ -1,4 +1,4 @@
-const BASE_URL = import.meta.env.PROD ? 'https://breakbot-barbershop-api.onrender.com/api' : 'http://localhost:3000/api';
+const BASE_URL = import.meta.env.PROD ? 'https://barbershop-api.af120-barbershop.workers.dev/api' : 'http://localhost:3000/api';
 
 function getHeaders() {
   const token = localStorage.getItem('token');
@@ -63,4 +63,8 @@ export default {
   
   getSettings: () => fetchAPI('/settings'),
   updateSettings: (data) => fetchAPI('/settings', { method: 'POST', body: JSON.stringify(data) }),
+
+  getBookingRequests: () => fetchAPI('/booking-requests'),
+  acceptBookingRequest: (id) => fetchAPI(`/booking-requests/${id}/accept`, { method: 'PUT' }),
+  rejectBookingRequest: (id) => fetchAPI(`/booking-requests/${id}/reject`, { method: 'PUT' }),
 };
