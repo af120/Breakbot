@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Scissors, Clock, User, Calendar, Phone, ArrowLeft, ArrowRight, Check, CheckCircle, Search, Star, DollarSign } from 'lucide-react';
 
 const BASE_URL = import.meta.env.PROD ? 'https://barbershop-api.af120-barbershop.workers.dev/api' : 'http://localhost:3000/api';
@@ -32,6 +33,7 @@ const steps = [
 ];
 
 export default function BookingPage() {
+  const navigate = useNavigate();
   const [step, setStep] = useState(0);
   const [services, setServices] = useState([]);
   const [barbers, setBarbers] = useState([]);
@@ -839,7 +841,7 @@ export default function BookingPage() {
         )}
       </div>
       <div style={{ textAlign: 'center', marginTop: '2rem', paddingBottom: '2rem' }}>
-        <a href="#/login" onClick={(e) => { e.preventDefault(); window.location.href = '/Breakbot/barbershop/login'; }} style={{ color: '#4b5563', textDecoration: 'none', fontSize: '0.85rem' }}>Admin Login</a>
+        <a href="#" onClick={(e) => { e.preventDefault(); navigate('/login'); }} style={{ color: '#4b5563', textDecoration: 'none', fontSize: '0.85rem' }}>Admin Login</a>
       </div>
     </div>
   );
