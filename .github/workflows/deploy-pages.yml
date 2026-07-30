@@ -30,6 +30,8 @@ jobs:
           node-version: 20
 
       - name: Build Barbershop
+        env:
+          VITE_API_URL: https://barbershop-api.af120-barbershop.workers.dev/api
         run: |
           cd barbershop
           npm install
