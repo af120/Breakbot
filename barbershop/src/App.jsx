@@ -65,7 +65,7 @@ function Sidebar() {
         </div>
       </div>
       <div className="mobile-nav">
-        {links.slice(0, 5).map(link => (
+        {links.map(link => (
           <Link key={link.to} to={link.to} className={`nav-link ${location.pathname === link.to ? 'active' : ''}`}>
             <link.icon size={20} />
             <span>{link.label.split(' ')[0]}</span>
