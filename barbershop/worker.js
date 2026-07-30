@@ -9,8 +9,7 @@ const app = new Hono();
 app.use('*', cors({
   origin: [
     'https://af120.github.io',
-    'http://localhost:5173',
-    'http://localhost:3000'
+    'http://localhost:5173'
   ],
   allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowHeaders: ['Content-Type', 'Authorization'],
@@ -164,13 +163,13 @@ app.get('/api/public/booking-status/:phone', async (c) => {
 });
 
 // --- Auth Route ---
-app.post('/api/login', async (c) => {
+app.post('/api/auth/login', async (c) => {
   const { username, password } = await c.req.json();
   const user = await c.env.DB.prepare('SELECT * FROM users WHERE username = ?').bind(username).first();
-  if (!user) return c.json({ error: 'Invalid credentials' }, 401);
+  if (!user) return c.json({ error: 'Invalid username or password' }, 401);
 
   if (!bcrypt.compareSync(password, user.password)) {
-    return c.json({ error: 'Invalid credentials' }, 401);
+    return c.json({ error: 'Invalid username or password' }, 401);
   }
 
   const secret = c.env.JWT_SECRET || 'secret123';
@@ -179,7 +178,7 @@ app.post('/api/login', async (c) => {
     username: user.username,
     role: user.role,
     exp: Math.floor(Date.now() / 1000) + 60 * 60 * 24 // 1 day
-  }, secret);
+  }, secret, 'HS256');
   
   return c.json({ token, user: { id: user.id, username: user.username, role: user.role, name: user.name } });
 });
@@ -195,10 +194,11 @@ app.use('/api/*', async (c, next) => {
 
   const token = authHeader.split(' ')[1];
   try {
-    const decoded = await verify(token, c.env.JWT_SECRET || 'secret123');
+    const decoded = await verify(token, c.env.JWT_SECRET || 'secret123', 'HS256');
     c.set('user', decoded);
     await next();
   } catch (err) {
+    console.log('JWT Verify Error:', err.message);
     return c.json({ error: 'Invalid token' }, 401);
   }
 });

@@ -1,4 +1,4 @@
-const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
+const BASE_URL = import.meta.env.VITE_API_URL || 'https://barbershop-api.af120-barbershop.workers.dev/api';
 
 function getHeaders() {
   const token = localStorage.getItem('token');
@@ -19,7 +19,6 @@ async function fetchAPI(endpoint, options = {}) {
       localStorage.removeItem('token');
       localStorage.removeItem('user');
       window.location.hash = '#/login';
-      return;
     }
     let err = 'API error';
     try {
@@ -32,7 +31,7 @@ async function fetchAPI(endpoint, options = {}) {
 }
 
 export default {
-  login: (credentials) => fetchAPI('/login', { method: 'POST', body: JSON.stringify(credentials) }),
+  login: (credentials) => fetchAPI('/auth/login', { method: 'POST', body: JSON.stringify(credentials) }),
   
   getDashboard: () => fetchAPI('/dashboard'),
   

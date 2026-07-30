@@ -19,10 +19,20 @@ export function AuthProvider({ children }) {
   }, []);
 
   const login = async (username, password) => {
-    const data = await api.login({ username, password });
-    localStorage.setItem('token', data.token);
-    localStorage.setItem('user', JSON.stringify(data.user));
-    setUser(data.user);
+    try {
+      const data = await api.login({ username, password });
+      if (!data || !data.token || !data.user) {
+        throw new Error("Invalid username or password");
+      }
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('user', JSON.stringify(data.user));
+      setUser(data.user);
+    } catch (error) {
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      setUser(null);
+      throw error;
+    }
   };
 
   const logout = () => {
