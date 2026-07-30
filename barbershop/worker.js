@@ -185,7 +185,7 @@ app.post('/api/auth/login', async (c) => {
 
 // --- Auth Middleware ---
 app.use('/api/*', async (c, next) => {
-  if (c.req.path === '/api/login' || c.req.path.startsWith('/api/public/') || c.req.path === '/api/health') {
+  if (c.req.path === '/api/auth/login' || c.req.path.startsWith('/api/public/') || c.req.path === '/api/health') {
     return next();
   }
 
