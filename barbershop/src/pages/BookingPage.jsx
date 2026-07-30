@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Scissors, Clock, User, Calendar, Phone, ArrowLeft, ArrowRight, Check, CheckCircle, Search, Star, DollarSign } from 'lucide-react';
 
-const BASE_URL = import.meta.env.PROD ? 'https://barbershop-api.af120-barbershop.workers.dev/api' : 'http://localhost:3000/api';
+const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
 
 async function publicAPI(endpoint) {
   const res = await fetch(`${BASE_URL}/public${endpoint}`);

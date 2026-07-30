@@ -1,4 +1,4 @@
-const BASE_URL = import.meta.env.PROD ? 'https://barbershop-api.af120-barbershop.workers.dev/api' : 'http://localhost:3000/api';
+const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
 
 function getHeaders() {
   const token = localStorage.getItem('token');
