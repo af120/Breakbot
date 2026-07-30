@@ -15,6 +15,12 @@ async function fetchAPI(endpoint, options = {}) {
     headers: getHeaders()
   });
   if (!response.ok) {
+    if (response.status === 401) {
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      window.location.hash = '#/login';
+      return;
+    }
     let err = 'API error';
     try {
       const data = await response.json();
