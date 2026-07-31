@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+Allow: /services
+Allow: /book
+Allow: /gallery
+Allow: /about
+Allow: /location
+Allow: /privacy
+
+Disallow: /admin
+Disallow: /api/
+
+Sitemap: /sitemap.xml
