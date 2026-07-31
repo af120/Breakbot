@@ -198,8 +198,7 @@ app.use('/api/*', async (c, next) => {
     c.set('user', decoded);
     await next();
   } catch (err) {
-    console.log('JWT Verify Error:', err.message);
-    return c.json({ error: 'Invalid token' }, 401);
+    return c.json({ error: 'Invalid token: ' + err.message }, 401);
   }
 });
 
