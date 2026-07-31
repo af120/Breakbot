@@ -1,0 +1,69 @@
+{
+  "routes": [
+    {
+      "routePath": "/api/admin/dashboard",
+      "mountPath": "/api/admin",
+      "method": "GET",
+      "module": [
+        "api/admin/dashboard.ts:onRequestGet"
+      ]
+    },
+    {
+      "routePath": "/api/auth/login",
+      "mountPath": "/api/auth",
+      "method": "POST",
+      "module": [
+        "api/auth/login.ts:onRequestPost"
+      ]
+    },
+    {
+      "routePath": "/api/auth/logout",
+      "mountPath": "/api/auth",
+      "method": "POST",
+      "module": [
+        "api/auth/logout.ts:onRequestPost"
+      ]
+    },
+    {
+      "routePath": "/api/auth/me",
+      "mountPath": "/api/auth",
+      "method": "GET",
+      "module": [
+        "api/auth/me.ts:onRequestGet"
+      ]
+    },
+    {
+      "routePath": "/api/book",
+      "mountPath": "/api",
+      "method": "POST",
+      "module": [
+        "api/book.ts:onRequestPost"
+      ]
+    },
+    {
+      "routePath": "/api/setup",
+      "mountPath": "/api",
+      "method": "POST",
+      "module": [
+        "api/setup.ts:onRequestPost"
+      ]
+    },
+    {
+      "routePath": "/api/admin",
+      "mountPath": "/api/admin",
+      "method": "",
+      "middleware": [
+        "api/admin/_middleware.ts:onRequest"
+      ]
+    },
+    {
+      "routePath": "/api/ping",
+      "mountPath": "/api",
+      "method": "",
+      "module": [
+        "api/ping.ts:onRequest"
+      ]
+    }
+  ],
+  "baseURL": "/"
+}

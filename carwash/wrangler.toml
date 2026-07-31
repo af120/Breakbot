@@ -1,0 +1,8 @@
+name = "car-wash-manager"
+pages_build_output_dir = "dist"
+compatibility_date = "2024-03-20"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "carwash-db"
+database_id = "b6ad1931-94b5-46d1-ae09-a328884e529f"
