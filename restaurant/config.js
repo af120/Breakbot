@@ -2,8 +2,8 @@
 // IMPORTANT: Never commit config.js with production secrets!
 
 export const config = {
-  supabaseUrl: 'YOUR_SUPABASE_URL',
-  supabaseAnonKey: 'YOUR_SUPABASE_ANON_KEY',
+  supabaseUrl: 'https://hpffjrmzjbfxnkvqhtow.supabase.co',
+  supabaseAnonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhwZmZqcm16amJmeG5rdnFodG93Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODgxOTcwMjgsImV4cCI6MjEwMzc3MzAyOH0.9YUPQrz38nXOauRR3MLopjGujPDjovtnKeUwxwaiS0E',
   turnstileSiteKey: 'YOUR_TURNSTILE_SITE_KEY',
   
   // Restaurant Info Settings (Fallback if not loaded from DB)
