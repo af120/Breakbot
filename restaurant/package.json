@@ -1,0 +1,16 @@
+{
+  "name": "restaurant",
+  "version": "1.0.0",
+  "description": "A production-quality restaurant website with a Supabase backend for reservations, menu management, and settings.",
+  "main": "config.example.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "jsonwebtoken": "^9.0.3"
+  }
+}
